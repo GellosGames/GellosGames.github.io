@@ -65,172 +65,174 @@ $tab-count: {{ site.tabs | size | plus: 1 }}; // plus 1 for home tab
 $sidebar-display: "sidebar-display";
 
 #sidebar {
-  @include pl-pr(0);
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  overflow-y: auto;
-  width: $sidebar-width-medium;
-  z-index: 99;
-  background: var(--sidebar-bg);
-
-  a {
-    @include sidebar-links;
-    &:hover {
-      color: #fff;
-      @include no-text-decoration;
-    }
-  }
-
-  .site-title {
-    a {
-      font-weight: 900;
-      font-size: 1.5rem;
-      letter-spacing: 0.5px;
-    }
-  }
-
-  .site-subtitle {
-    font-size: 95%;
-    color: #828282;
-    line-height: 1.2rem;
-    word-spacing: 1px;
-    margin: 0.5rem 1.5rem 0.5rem 1.5rem;
-    min-height: 3rem; // avoid vertical shifting in multi-line words
-    user-select: none;
-  }
-
-  .nav-link {
-    border-radius: 0;
-    font-size: 0.95rem;
-    font-weight: 600;
-    letter-spacing: 1px;
-    display: table-cell;
-    vertical-align: middle;
-  }
-
-  .nav-item {
-    text-align: center;
-    display: table;
-    height: $tab-height;
-    &:hover {
-      .nav-link {
-        color: #f8f9facf;
-      }
-    }
-    &.active {
-      .nav-link {
-        color: #fcfcfc;
-      }
-    }
-  }
-
-  ul {
-    height: $tab-height * $tab-count;
-    margin-bottom: 2rem;
-    padding-left: 0;
-
-    > li {
-      width: 100%;
-
-      &:last-child {
-        $cursor-width: 3px;
-
-        > a {
-          position: relative;
-          left: $cursor-width / 2;
-          width: 100%;
-        }
-
-        &::after { // the cursor
-          display: table;
-          visibility: hidden;
-          content: "";
-          position: relative;
-          right: 1px;
-          width: $cursor-width;
-          height: $tab-cursor-height;
-          border-radius: 1px;
-          background-color: var(--nav-cursor-color);
-          pointer-events: none;
-        }
-      }
-    } // li
-
-    @mixin fix-cursor($top) {
-      top: $top;
-      visibility: visible;
-    }
-
-    @for $i from 1 through $tab-count {
-      $offset: $tab-count - $i;
-      $top: -$offset * $tab-height + $tab-cursor-height / 2;
-
-      @if $i < $tab-count {
-        > li.active:nth-child(#{$i}),
-        > li.nav-item:nth-child(#{$i}):hover {
-          ~li:last-child::after {
-            @include fix-cursor($top);
-          }
-        }
-      } @else {
-        > li.active:nth-child(#{$i}):last-child::after,
-        > li.nav-item:nth-child(#{$i}):last-child:hover::after {
-          @include fix-cursor($top);
-        }
-      }
-
-    } // @for
-
-  } // ul
-
-  .sidebar-bottom {
-    font-size: 1.2rem;
-    margin-bottom: 2.1rem;
-
-    @include ml-mr(auto);
-    @include pl-pr(1rem);
-
-    %icon {
-      width: 2.4rem;
-      text-align: center;
-    }
+    @include pl-pr(0);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    overflow-y: auto;
+    width: $sidebar-width-medium;
+    z-index: 99;
+    background: var(--sidebar-bg);
 
     a {
-      @extend %icon;
-    }
-
-    a:hover, #mode-toggle-wrapper > i:hover {
-      color: #fff;
-    }
-
-    #mode-toggle-wrapper {
-      @extend %icon;
-
-      i {
         @include sidebar-links;
-        margin: 0;
-        font-size: 1.05rem;
+
+        &:hover {
+            color: #fff;
+            @include no-text-decoration;
+        }
+    }
+
+    .site-title {
+        a {
+            color: #b452fe;
+            font-weight: 900;
+            font-size: 1.5rem;
+            letter-spacing: 0.5px;
+        }
+    }
+
+    .site-subtitle {
+        font-size: 95%;
+        color: #0881c7;
+        line-height: 1.2rem;
+        word-spacing: 1px;
+        margin: 0.5rem 1.5rem 0.5rem 1.5rem;
+        min-height: 3rem; // avoid vertical shifting in multi-line words
+        user-select: none;
+    }
+
+    .nav-link {
+        border-radius: 0;
+        font-size: 0.95rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    .nav-item {
         text-align: center;
-        position: relative;
-        bottom: 1px;
-      }
+        display: table;
+        height: $tab-height;
 
+        &:hover {
+            .nav-link {
+                color: #f8f9facf;
+            }
+        }
+
+        &.active {
+            .nav-link {
+                color: #fcfcfc;
+            }
+        }
     }
 
-    .icon-border {
-      background-color: #525354;
-      content: "";
-      width: 3px;
-      height: 3px;
-      border-radius: 50%;
-      position: relative;
-      top: 12px;
+    ul {
+        height: $tab-height * $tab-count;
+        margin-bottom: 2rem;
+        padding-left: 0;
+
+        > li {
+            width: 100%;
+
+            &:last-child {
+                $cursor-width: 3px;
+
+                > a {
+                    position: relative;
+                    left: $cursor-width / 2;
+                    width: 100%;
+                }
+
+                &::after { // the cursor
+                    display: table;
+                    visibility: hidden;
+                    content: "";
+                    position: relative;
+                    right: 1px;
+                    width: $cursor-width;
+                    height: $tab-cursor-height;
+                    border-radius: 1px;
+                    background-color: var(--nav-cursor-color);
+                    pointer-events: none;
+                }
+            }
+        }
+        // li
+        @mixin fix-cursor($top) {
+            top: $top;
+            visibility: visible;
+        }
+
+        @for $i from 1 through $tab-count {
+            $offset: $tab-count - $i;
+            $top: -$offset * $tab-height + $tab-cursor-height / 2;
+
+            @if $i < $tab-count {
+                > li.active:nth-child(#{$i}),
+                > li.nav-item:nth-child(#{$i}):hover {
+                    ~ li:last-child::after {
+                        @include fix-cursor($top);
+                    }
+                }
+            }
+            @else {
+                > li.active:nth-child(#{$i}):last-child::after,
+                > li.nav-item:nth-child(#{$i}):last-child:hover::after {
+                    @include fix-cursor($top);
+                }
+            }
+        }
+        // @for
     }
+    // ul
+    .sidebar-bottom {
+        font-size: 1.2rem;
+        margin-bottom: 2.1rem;
 
-  } // .sidebar-bottom
+        @include ml-mr(auto);
+        @include pl-pr(1rem);
 
+        %icon {
+            width: 2.4rem;
+            text-align: center;
+        }
+
+        a {
+            @extend %icon;
+        }
+
+        a:hover, #mode-toggle-wrapper > i:hover {
+            color: #fff;
+        }
+
+        #mode-toggle-wrapper {
+            @extend %icon;
+
+            i {
+                @include sidebar-links;
+                margin: 0;
+                font-size: 1.05rem;
+                text-align: center;
+                position: relative;
+                bottom: 1px;
+            }
+        }
+
+        .icon-border {
+            background-color: #525354;
+            content: "";
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            position: relative;
+            top: 12px;
+        }
+    }
+    // .sidebar-bottom
 } // #sidebar
 
 @media (hover: hover) {
