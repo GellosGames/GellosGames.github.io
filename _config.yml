@@ -32,6 +32,7 @@ social:
   email: example@doamin.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link
+    - https://www.termsofusegenerator.net/live.php?token=3VjbrdPdMVIRAWABPYq4a2YwwVc1W7sS
     # - https://twitter.com/username      # change to your twitter homepage
     - https://github.com/gellosgames     # change to your github homepage
     # Uncomment below to add more social links
@@ -87,7 +88,7 @@ theme_mode: [dark]
 img_cdn: ''
 
 # the avatar on sidebar, support local or CORS resources
-avatar: https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images/commons/avatar.jpg
+avatar:  /assets/img/Gellos_WebLogo.jpg  # https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images/commons/avatar.jpg
 
 # boolean type, the global switch for ToC in posts.
 toc: true
