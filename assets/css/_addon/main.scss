@@ -79,14 +79,14 @@ $sidebar-display: "sidebar-display";
         @include sidebar-links;
 
         &:hover {
-            color: #fff;
+            //color: #fff;
             @include no-text-decoration;
         }
     }
 
     .site-title {
         a {
-            color: rgba(180,82,254,0.7);
+            color: rgba(180,82,254,1);
             font-weight: 900;
             font-size: 1.5rem;
             letter-spacing: 0.5px;
